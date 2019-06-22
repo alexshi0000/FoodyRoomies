@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/alexshi0000/FoodyRoomies/issues"
   },
-  "homepage": "https://github.com/alexshi0000/FoodyRoomies#readme"
+  "homepage": "https://github.com/alexshi0000/FoodyRoomies#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
 }
