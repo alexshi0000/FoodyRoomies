@@ -44,38 +44,52 @@
       <div class="col-sm-4">
         <h3>Chores  <span class="badge badge-secondary">3</span></h3>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Chore" aria-label="Chore name" aria-describedby="button-addon2">
-          <input type="text" class="form-control" placeholder="Roomie" aria-label="Roomie name" aria-describedby="button-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
+
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Due</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">1</a>
+              <a class="dropdown-item" href="#">2</a>
+              <a class="dropdown-item" href="#">3</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">4</a>
+            </div>
           </div>
+            <input type="text" class="form-control" placeholder="Chore" aria-label="Chore name" aria-describedby="button-addon2">
+            <input type="text" class="form-control" placeholder="Roomie" aria-label="Roomie name" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
+            </div>
+          
         </div>
-        <table class="table">
-          <thead>
+        <div class="border rounded">
+        <table class="table-borderless table table-hover">
+          <thead class="thead-light">
             <tr>
-            <th scope="col">Date</th>
+            <th scope="col">Due</th>
             <th scope="col">Chore</th>
             <th scope="col">Roomie</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">06/22/2019</th>
-              <td>Mark</td>
-              <td>Otto</td>
+              <th scope="row">1</th>
+              <td>Clean the Toilet</td>
+              <td>Albert</td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
+              <td>Eat ass</td>
+              <td>Albert</td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
+              <td>Finish App</td>
+              <td>Albert</td>
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
 
       <div class="col-sm-4">
