@@ -1,0 +1,22 @@
+{
+  "name": "foodyroomies",
+  "version": "1.0.0",
+  "description": "a roommate food sharing and chore logging app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexshi0000/FoodyRoomies.git"
+  },
+  "keywords": [
+    "food"
+  ],
+  "author": "alex,albert,towseef,jack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexshi0000/FoodyRoomies/issues"
+  },
+  "homepage": "https://github.com/alexshi0000/FoodyRoomies#readme"
+}
