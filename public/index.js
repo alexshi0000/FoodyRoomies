@@ -67,44 +67,71 @@ function add_image(imgloc) {
 }
 
 function deleteChore(btn) {
-    // let api_base = "http://localhost:3000/api/";
-    // var item = btn.getElementById("chore").value;
-    // var roomie = btn.getElementById("choreRoomie").value;
-    // $.get(api_base+"do_chore?chore_id="+item+"&name="+roomie);
-    var row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-    document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
-  }
+  //let api_base = "http://localhost:3000/api/";
+  //var item = btn.parentNode.parentNode.cells[1].value;
+  //var roomie = btn.parentNode.parentNode.cells[2].value;
+  //$.post(api_base+"do_chore?chore_id="+item+"&name="+roomie);
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+  document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
+  $.get("https://ya3shi.api.stdlib.com/foody-project@dev/add_chore/?message=a task has just been completed!");
+  console.log(item);
+}
 
-  function deleteGrocery(btn) {
-    var row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-    // add api update to remove from db
-    document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
-  }
+function deleteGrocery(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+  // add api update to remove from db
+  document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
+}
 
-  function addGrocery() {
-    var item = document.getElementById("grocery").value;
-    var amount = document.getElementById("groceryAmount").value;
+function addGrocery() {
+  var item = $("#grocery").val();
+  var amount = $("#groceryAmount").val();
 
-    var table = document.getElementById("groceryTable");
-    var row = table.insertRow(0);
+  var table = document.getElementById("groceryTable");
+  var row = table.insertRow(0);
 
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
 
-    cell1.innerHTML = amount;
-    cell2.innerHTML = item;
-    cell3.innerHTML = '<input type="button" id="deleteRow" value="Bought!" onclick="deleteGrocery(this)">';
+  cell1.innerHTML = amount;
+  cell2.innerHTML = item;
+  cell3.innerHTML = '<input type="button" id="deleteRow" value="Bought!" onclick="deleteGrocery(this)">';
 
-    document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
+  document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
 
-    let api_base = "http://localhost:3000/api/";
+  let api_base = "http://localhost:3000/api/";
 
-    $.post(api_base+"add_item?item="+item+"&quant="+amount);
+  $.post(api_base+"add_item?item="+item+"&quant="+amount);
 
-    $.post("https://ya3shi.api.stdlib.com/foody-project@dev/add_item?message="+amount+"of"+item+" has been added to the grocery list!");
+  $.post("https://ya3shi.api.stdlib.com/foody-project@dev/add_item?message="+amount+"of"+item+" has been added to the grocery list!");
+}
+
+function getGroceries() {
+  $.get('http://localhost:3000/api/get_groceries', (data) => {
+    let len = data.length;
+    var i = 0;
+
+    for (i; i < len; i++) {
+      var item = data[i].item;
+      var amount = data[i].quant;
+
+      var table = document.getElementById("groceryTable");
+      var row = table.insertRow(0);
+
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+
+      cell1.innerHTML = amount;
+      cell2.innerHTML = item;
+      cell3.innerHTML = '<input type="button" id="deleteRow" value="Bought!" onclick="deleteGrocery(this)">';
+
+      document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
+    }
+  });
 }
 
 /*

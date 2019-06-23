@@ -107,11 +107,86 @@ app.post('/api/do_chore', (req, res) => {
 
 //add to groceries list
 app.post('/api/add_item', (req, res) => {
+  var data = {
+    item:  req.query.item,
+    quant: req.query.quant
+  };
+  console.log("adding item " + data.item);
 
+  MongoClient.connect(url, (err, db) => {
+    if (err)
+      throw err;
+    var dbo = db.db('foody');
+    var new_item = {
+      item:     data.item,
+      quant:    data.quant
+    };
+    dbo.collection('groceries').insertOne(new_item, (err, result) => {
+      if (err) {
+        res.status(400).json({error: 'could not add the grocery item'});
+        throw err;
+      }
+
+      console.log('grocery item has been added');
+      res.status(200).json(); //success
+      db.close();
+    });
+  });
 });
 
 //get groceries
-//
+app.get('/api/get_groceries', (req, res) => {
+  console.log("getting groceries");
+
+  MongoClient.connect(url, (err, db) => {
+    if (err)
+      throw err;
+    var dbo = db.db('foody');
+    var query = {};
+
+    dbo.collection("groceries").find(query, {}).toArray((err, result) => {
+      if (err) {
+        res.status(400).json({error: 'could not retrieve groceries'});
+        throw err;
+      }
+      if (result.length === 0) {
+        res.status(200).json({"message":"could not find"});
+      }
+      else {
+        console.log('retrieved groceries'); //success
+        res.status(200).json(result);
+        db.close();
+      }
+    });
+  });
+});
+
+//remove_grocery
+app.post("/api/remove_grocery", (req, res) => {
+  console.log("removing grocery");
+  var item = req.query.item;
+
+  MongoClient.connect(url, (err, db) => {
+    if (err)
+      throw err;
+    var dbo = db.db('foody');
+    var query = {
+      item: item
+    }
+    dbo.collection("groceries").remove(query, (err, result) => {
+      console.log("removed");
+      if (err) {
+        res.status(400).json({error: "could not delete this item"});
+        throw err;
+      }
+      else {
+        console.log("deleted");
+        res.status(200).json({}); //success
+        db.close();
+      }
+    });
+  });
+});
 
 http.listen(3000, () => {
     console.log("foodyroomies server started");
