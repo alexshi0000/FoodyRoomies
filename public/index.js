@@ -4,14 +4,20 @@ function addChore() {
     var date = document.getElementById("choreDate").value;
     var item = document.getElementById("chore").value;
     var roomie = document.getElementById("choreRoomie").value;
+
     var table = document.getElementById("choreTable");
     var row = table.insertRow(0);
+    
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    
     cell1.innerHTML = date;
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
+    cell4.innerHTML = '<input type="button" id="delete">';
+
     document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
 }
 
