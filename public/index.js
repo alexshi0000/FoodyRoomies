@@ -16,7 +16,7 @@ function addChore() {
     cell1.innerHTML = date;
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
-    cell4.innerHTML = '<input type="button" id="delete">';
+    cell4.innerHTML = '<input type="button" id="delete" value="done">';
 
     document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
 }
