@@ -67,15 +67,20 @@ function add_image(imgloc) {
 }
 
 function deleteChore(btn) {
+    // let api_base = "http://localhost:3000/api/";
+    // var item = btn.getElementById("chore").value;
+    // var roomie = btn.getElementById("choreRoomie").value;
+    // $.get(api_base+"do_chore?chore_id="+item+"&name="+roomie);
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
-    // add api update to remove from db
+    document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
   }
 
   function deleteGrocery(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
     // add api update to remove from db
+    document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
   }
 
   function addGrocery() {
