@@ -7,8 +7,10 @@ var MongoClient = require('mongodb').MongoClient;
 var url         = "mongodb://127.0.0.1:27017/";
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
-})
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+app.use(express.static('public'));
 
 //add a chore to the database
 app.post('/api/add_chore', (req, res) => {
@@ -102,6 +104,8 @@ app.post('/api/do_chore', (req, res) => {
     });
   });
 });
+
+
 
 http.listen(3000, () => {
     console.log("foodyroomies server started");
