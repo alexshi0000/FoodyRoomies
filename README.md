@@ -1,3 +1,5 @@
+<div style="text-align:center"><img src="FoodyRoomies.png"/></div>
+
 # FoodyRoomies
  An app that allows roommates to manage shared groceries and schedules.
 
