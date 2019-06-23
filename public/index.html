@@ -37,6 +37,7 @@
   </head>
 
   <body>
+    <img src="https://media.giphy.com/media/fngeQvy995JpJhoMgz/giphy.gif" style="position: fixed; bottom:0; right: 1%">
     <div class="jumbotron text-center">
       <h1>Foody Roomies</h1>
       <p>A roommate's best friend</p>
@@ -52,8 +53,8 @@
           </a>
 
           <a data-target="#TableViews" data-slide-to="1" class="btn btn-light">
-            <input type="radio" name="options" id="fridge" autocomplete="off">
-            <h3>Fridge <span class="badge badge-secondary" id="fridgeCount"></span></h3>
+            <input type="radio" name="options" id="shared" autocomplete="off">
+            <h3>Shared Expenses <span class="badge badge-secondary" id="fridgeCount"></span></h3>
           </a>
 
           <a data-target="#TableViews" data-slide-to="2" class="btn btn-light">
@@ -138,57 +139,32 @@
                   </div>
                 </div>
           </div>
+          <!-- Shared Resources -->
+
           <div class="carousel-item">
               <div class="container">
-                  <div class="input-group mb-3">
-                    <input
-                    id="fridgeDate"
-                      type="date"
-                      class="form-control"
-                      placeholder="Due"
-                      aria-label="Due date"
-                      aria-describedby="button-addon2"
-                    />
-                    <div class="input-group-prepend"></div>
-                    <input
-                    id="fridge"
-                      type="text"
-                      class="form-control"
-                      placeholder="Chore"
-                      aria-label="Chore name"
-                      aria-describedby="button-addon2"
-                    />
-                    <input
-                    id="fridgeRoomie"
-                      type="text"
-                      class="form-control"
-                      placeholder="Roomie"
-                      aria-label="Roomie name"
-                      aria-describedby="button-addon2"
-                    />
-                    <div class="input-group-append">
-                      <button
-                        class="btn btn-outline-secondary"
-                        type="button"
-                        id="button-addon2"
-                        onclick="addFridge()"
-                      >
-                        Add
-                      </button>
-                    </div>
-                  </div>
-                  <div class="container-fluid border rounded">
-                    <table class="table table-borderless table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col">Due</th>
-                          <th scope="col">Chore</th>
-                          <th scope="col">Roomie</th>
-                        </tr>
-                      </thead>
-                      <tbody id="fridgeTable">
-                      </tbody>
-                    </table>
+                <div class="card text-center" style="width: 50%; margin: auto; margin-bottom: 2%">
+                      <div class="card-body">
+                        <input type="text" class="form-control" placeholder="Your name" style="margin-bottom: 15px">
+
+                        <div class="input-group mb-3">
+                          <div class="custom-file" style="margin: 0%">
+                            <input type="file" accept="image/*" id="imageIn">
+                            <!-- <label class="custom-file-label" for="imageIn">Choose Img</label> -->
+                          </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                          </div>
+                          <input type="number" class="form-control" placeholder="0.00">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+                          </div>
+                        </div>    
+                      </div>
+                    </ul>
                   </div>
                 </div>
           </div>
