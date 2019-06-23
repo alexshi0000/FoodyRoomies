@@ -1,3 +1,5 @@
+// add to db not table html, get db as well
+
 function addChore() {
     var date = document.getElementById("choreDate").value;
     var item = document.getElementById("chore").value;
@@ -10,6 +12,7 @@ function addChore() {
     cell1.innerHTML = date;
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
+    document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
 }
 
 function addFridge() {
@@ -24,6 +27,7 @@ function addFridge() {
     cell1.innerHTML = date;
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
+    document.getElementById("fridgeCount").innerHTML = document.getElementById("fridgeTable").rows.length;
 }
 
 function addGrocery() {
@@ -38,4 +42,5 @@ function addGrocery() {
     cell1.innerHTML = date;
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
+    document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
 }
