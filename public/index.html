@@ -223,29 +223,21 @@
           <div class="carousel-item">
               <div class="container">
                   <div class="input-group mb-3">
+                    <div class="input-group-prepend"></div>
                     <input
-                    id="groceryDate"
-                      type="date"
+                    id="groceryAmount"
+                      type="text"
                       class="form-control"
-                      placeholder="Due"
-                      aria-label="Due date"
+                      placeholder="Amount"
+                      aria-label="Grocery name"
                       aria-describedby="button-addon2"
                     />
-                    <div class="input-group-prepend"></div>
                     <input
                     id="grocery"
                       type="text"
                       class="form-control"
-                      placeholder="Chore"
-                      aria-label="Chore name"
-                      aria-describedby="button-addon2"
-                    />
-                    <input
-                    id="groceryRoomie"
-                      type="text"
-                      class="form-control"
-                      placeholder="Roomie"
-                      aria-label="Roomie name"
+                      placeholder="Grocery Item"
+                      aria-label="Grocery Item"
                       aria-describedby="button-addon2"
                     />
                     <div class="input-group-append">
@@ -263,9 +255,8 @@
                     <table class="table table-borderless table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Due</th>
-                          <th scope="col">Chore</th>
-                          <th scope="col">Roomie</th>
+                          <th scope="col">Amount</th>
+                          <th scope="col">Grocery Item</th>
                         </tr>
                       </thead>
                       <tbody id="groceryTable">

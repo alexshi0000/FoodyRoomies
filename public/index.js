@@ -1,5 +1,3 @@
-// add to db not table html, get db as well
-
 function addChore() {
     var date = document.getElementById("choreDate").value;
     var item = document.getElementById("chore").value;
@@ -16,7 +14,7 @@ function addChore() {
     cell1.innerHTML = date;
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
-    cell4.innerHTML = '<input type="button" id="delete" value="done">';
+    cell4.innerHTML = '<input type="button" id="deleteRow" value="Done!" onclick="deleteChore(this)">';
 
     document.getElementById("choreCount").innerHTML = document.getElementById("choreTable").rows.length;
 
@@ -55,7 +53,7 @@ function getChores() {
         cell1.innerHTML = data[i].time;
         cell2.innerHTML = data[i].chore_id;
         cell3.innerHTML = data[i].name;
-        cell4.innerHTML = '<input type="button" id="delete" value="done">';
+        cell4.innerHTML = '<input type="button" id="delete" value="Done!" onclick="deleteChore(this)">';
       }
     });
 }
@@ -66,6 +64,42 @@ function add_image(imgloc) {
     var amt  = $("#shared-cost").val() / 4;
     $.get("https://ya3shi.api.stdlib.com/foody-project@dev/receipt/?imgloc="+imgloc);
     $.get("https://ya3shi.api.stdlib.com/foody-project@dev/expenses/?message="+"you owe "+name+" "+amt+" dollars");
+}
+
+function deleteChore(btn) {
+    var row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+    // add api update to remove from db
+  }
+
+  function deleteGrocery(btn) {
+    var row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+    // add api update to remove from db
+  }
+
+  function addGrocery() {
+    var item = document.getElementById("grocery").value;
+    var amount = document.getElementById("groceryAmount").value;
+
+    var table = document.getElementById("groceryTable");
+    var row = table.insertRow(0);
+
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+
+    cell1.innerHTML = amount;
+    cell2.innerHTML = item;
+    cell3.innerHTML = '<input type="button" id="deleteRow" value="Bought!" onclick="deleteGrocery(this)">';
+
+    document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
+
+    let api_base = "http://localhost:3000/api/";
+
+    $.post(api_base+"add_item?item="+item+"&quant="+amount);
+
+    $.post("https://ya3shi.api.stdlib.com/foody-project@dev/add_item?message="+amount+"of"+item+" has been added to the grocery list!");
 }
 
 /*
