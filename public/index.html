@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    <script type="text/javascript" src="index.js"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -43,20 +46,34 @@
       <p>A roommate's best friend</p>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-      <div class="text-center row">
-        <a data-target="#carouselExampleIndicators" data-slide-to="0" class="col"><h3>Chores</h3></a>
-        <a data-target="#carouselExampleIndicators" data-slide-to="1" class="col"><h3>Fridge</h3></a>
-        <a data-target="#carouselExampleIndicators" data-slide-to="2" class="col"><h3>Grocery</h3></a>
-      </div>
-      
+    <div id="TableViews" class="carousel slide" data-ride="carousel" data-interval="false">
+      <!-- Buttons -->
 
+      <div class="container text-center" style="margin-bottom: 1%">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 1%; width: 70%">
+          <a data-target="#TableViews" data-slide-to="0" class="btn btn-light">
+            <input type="radio" name="options" id="chores" autocomplete="off" checked style="opacity: 0">
+            <h3>Chores <span class="badge badge-secondary" id="choreCount"></span></h3>
+          </a>
+          
+          <a data-target="#TableViews" data-slide-to="1" class="btn btn-light">
+            <input type="radio" name="options" id="fridge" autocomplete="off">
+            <h3>Fridge <span class="badge badge-secondary" id="fridgeCount"></span></h3>
+          </a>
+          
+          <a data-target="#TableViews" data-slide-to="2" class="btn btn-light">
+            <input type="radio" name="options" id="groceries" autocomplete="off">
+            <h3>Groceries <span class="badge badge-secondary" id="groceryCount"></span></h3>
+          </a>
+
+        </div>
+      </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
               <div class="container">
-                  <h3>Chores <span class="badge badge-secondary">3</span></h3>
                   <div class="input-group mb-3">
                     <input
+                    id="choreDate"
                       type="date"
                       class="form-control"
                       placeholder="Due"
@@ -65,6 +82,7 @@
                     />
                     <div class="input-group-prepend"></div>
                     <input
+                    id="chore"
                       type="text"
                       class="form-control"
                       placeholder="Chore"
@@ -72,6 +90,7 @@
                       aria-describedby="button-addon2"
                     />
                     <input
+                    id="choreRoomie"
                       type="text"
                       class="form-control"
                       placeholder="Roomie"
@@ -83,6 +102,7 @@
                         class="btn btn-outline-secondary"
                         type="button"
                         id="button-addon2"
+                        onclick="addChore()"
                       >
                         Add
                       </button>
@@ -97,22 +117,7 @@
                           <th scope="col">Roomie</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Clean the Toilet</td>
-                          <td>Albert</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Eat ass</td>
-                          <td>Albert</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Finish App</td>
-                          <td>Albert</td>
-                        </tr>
+                      <tbody id="choreTable">
                       </tbody>
                     </table>
                   </div>
@@ -120,9 +125,9 @@
           </div>
           <div class="carousel-item">
               <div class="container">
-                  <h3>Fridge <span class="badge badge-secondary">3</span></h3>
                   <div class="input-group mb-3">
                     <input
+                    id="fridgeDate"
                       type="date"
                       class="form-control"
                       placeholder="Due"
@@ -131,6 +136,7 @@
                     />
                     <div class="input-group-prepend"></div>
                     <input
+                    id="fridge"
                       type="text"
                       class="form-control"
                       placeholder="Chore"
@@ -138,6 +144,7 @@
                       aria-describedby="button-addon2"
                     />
                     <input
+                    id="fridgeRoomie"
                       type="text"
                       class="form-control"
                       placeholder="Roomie"
@@ -149,6 +156,7 @@
                         class="btn btn-outline-secondary"
                         type="button"
                         id="button-addon2"
+                        onclick="addFridge()"
                       >
                         Add
                       </button>
@@ -163,22 +171,7 @@
                           <th scope="col">Roomie</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Clean the Toilet</td>
-                          <td>Albert</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Eat ass</td>
-                          <td>Albert</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Finish App</td>
-                          <td>Albert</td>
-                        </tr>
+                      <tbody id="fridgeTable">
                       </tbody>
                     </table>
                   </div>
@@ -186,9 +179,9 @@
           </div>
           <div class="carousel-item">
               <div class="container">
-                  <h3>Grocery <span class="badge badge-secondary">3</span></h3>
                   <div class="input-group mb-3">
                     <input
+                    id="groceryDate"
                       type="date"
                       class="form-control"
                       placeholder="Due"
@@ -197,6 +190,7 @@
                     />
                     <div class="input-group-prepend"></div>
                     <input
+                    id="grocery"
                       type="text"
                       class="form-control"
                       placeholder="Chore"
@@ -204,6 +198,7 @@
                       aria-describedby="button-addon2"
                     />
                     <input
+                    id="groceryRoomie"
                       type="text"
                       class="form-control"
                       placeholder="Roomie"
@@ -215,6 +210,7 @@
                         class="btn btn-outline-secondary"
                         type="button"
                         id="button-addon2"
+                        onclick="addGrocery()"
                       >
                         Add
                       </button>
@@ -229,22 +225,7 @@
                           <th scope="col">Roomie</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Clean the Toilet</td>
-                          <td>Albert</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Eat ass</td>
-                          <td>Albert</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Finish App</td>
-                          <td>Albert</td>
-                        </tr>
+                      <tbody id="groceryTable">
                       </tbody>
                     </table>
                   </div>
@@ -252,70 +233,5 @@
           </div>
         </div>
       </div>
-
-    <!-- <div class="container">
-      <h3>Chores <span class="badge badge-secondary">3</span></h3>
-      <div class="input-group mb-3">
-        <input
-          type="date"
-          class="form-control"
-          placeholder="Due"
-          aria-label="Due date"
-          aria-describedby="button-addon2"
-        />
-        <div class="input-group-prepend"></div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Chore"
-          aria-label="Chore name"
-          aria-describedby="button-addon2"
-        />
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Roomie"
-          aria-label="Roomie name"
-          aria-describedby="button-addon2"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            id="button-addon2"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-      <div class="container-fluid border rounded">
-        <table class="table table-borderless table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Due</th>
-              <th scope="col">Chore</th>
-              <th scope="col">Roomie</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Clean the Toilet</td>
-              <td>Albert</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Eat ass</td>
-              <td>Albert</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Finish App</td>
-              <td>Albert</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
   </body>
 </html>
