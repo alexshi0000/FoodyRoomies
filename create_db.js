@@ -13,8 +13,8 @@ MongoClient.connect(url, function(err, db) {
       if (err)
         throw err;
       console.log('fridge collection created!');
+      db.close();
     });
-    db.close();
   };
 
   var create_expenses_collection = () => {
