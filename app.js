@@ -105,7 +105,13 @@ app.post('/api/do_chore', (req, res) => {
   });
 });
 
+//add to groceries list
+app.post('/api/add_item', (req, res) => {
 
+});
+
+//get groceries
+//
 
 http.listen(3000, () => {
     console.log("foodyroomies server started");

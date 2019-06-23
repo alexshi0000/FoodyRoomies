@@ -145,24 +145,76 @@
               <div class="container">
                 <div class="card text-center" style="width: 50%; margin: auto; margin-bottom: 2%">
                       <div class="card-body">
-                        <input type="text" class="form-control" placeholder="Your name" style="margin-bottom: 15px">
-
-                        <div class="input-group mb-3">
-                          <div class="custom-file" style="margin: 0%">
-                            <input type="file" accept="image/*" id="imageIn">
-                            <!-- <label class="custom-file-label" for="imageIn">Choose Img</label> -->
-                          </div>
-                        </div>
+                        <input id="share-name" type="text" class="form-control" placeholder="Your name" style="margin-bottom: 15px">
 
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                           </div>
-                          <input type="number" class="form-control" placeholder="0.00">
-                          <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
-                          </div>
-                        </div>    
+                          <input id="shared-cost" type="number" class="form-control" placeholder="0.00">
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <form id="imgur">
+                              <input type="file" class="imgur" accept="image/*" data-max-size="5000" />
+                          </form>
+                        </div>
+
+                        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+                        <script>
+                            $("document").ready(function () {
+
+                                $('input[type=file]').on("change", function () {
+
+                                    var $files = $(this).get(0).files;
+
+                                    if ($files.length) {
+
+                                        // Reject big files
+                                        if ($files[0].size > $(this).data("max-size") * 1024) {
+                                            console.log("Please select a smaller file");
+                                            return false;
+                                        }
+
+                                        // Replace ctrlq with your own API key
+                                        var apiUrl = 'https://api.imgur.com/3/image';
+                                        var apiKey = '13fe870ec110adb';
+
+                                        var formData = new FormData();
+                                        formData.append("image", $files[0]);
+
+                                        var settings = {
+                                            "async": true,
+                                            "crossDomain": true,
+                                            "url": apiUrl,
+                                            "method": "POST",
+                                            "datatype": "json",
+                                            "headers": {
+                                                "Authorization": "Client-ID " + apiKey
+                                            },
+                                            "processData": false,
+                                            "contentType": false,
+                                            "data": formData,
+                                            beforeSend: function (xhr) {
+                                                console.log("Uploading");
+                                            },
+                                            success: function (res) {
+                                                console.log(res.data.link);
+                                                //$('body').append('<img src="' + res.data.link + '" />');
+                                                add_image(res.data.link);
+                                            },
+                                            error: function () {
+                                                alert("Failed");
+                                            }
+                                        }
+                                        $.ajax(settings).done(function (response) {
+                                            console.log("Done");
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+
                       </div>
                     </ul>
                   </div>

@@ -60,6 +60,15 @@ function getChores() {
     });
 }
 
+function add_image(imgloc) {
+    console.log(imgloc);
+    var name = $("#share-name").val();
+    var amt  = $("#shared-cost").val() / 4;
+    $.get("https://ya3shi.api.stdlib.com/foody-project@dev/receipt/?imgloc="+imgloc);
+    $.get("https://ya3shi.api.stdlib.com/foody-project@dev/expenses/?message="+"you owe "+name+" "+amt+" dollars");
+}
+
+/*
 function addFridge() {
     var date = document.getElementById("fridgeDate").value;
     var item = document.getElementById("fridge").value;
@@ -73,8 +82,8 @@ function addFridge() {
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
     document.getElementById("fridgeCount").innerHTML = document.getElementById("fridgeTable").rows.length;
-}
-
+}*/
+/*
 function addGrocery() {
     var date = document.getElementById("groceryDate").value;
     var item = document.getElementById("grocery").value;
@@ -88,4 +97,4 @@ function addGrocery() {
     cell2.innerHTML = item;
     cell3.innerHTML = roomie;
     document.getElementById("groceryCount").innerHTML = document.getElementById("groceryTable").rows.length;
-}
+}*/
