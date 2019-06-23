@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "create_db": "node create_db.js"
+    "create_db": "node create_db.js",
+    "mongo": "mongod"
   },
   "repository": {
     "type": "git",
