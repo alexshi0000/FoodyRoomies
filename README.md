@@ -14,7 +14,7 @@
 
 ## App Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pPiSlKU8Suo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Demo](https://img.youtube.com/vi/pPiSlKU8Suo/0.jpg)](https://www.youtube.com/watch?v=pPiSlKU8Suo)
 
 ## Setup & Run
 ```
