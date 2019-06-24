@@ -10,7 +10,10 @@
  - responsive and intuitive
  
 ## Screenshots
-
+<div style="text-align:center"><img src="screenshots/1.png"/></div>
+<div style="text-align:center"><img src="screenshots/2.png"/></div>
+<div style="text-align:center"><img src="screenshots/3.png"/></div>
+<div style="text-align:center"><img src="screenshots/4.png"/></div>
 
 ## App Demo (Youtube Video)
 
