@@ -16,7 +16,7 @@
 
 ## App Demo (Youtube Video)
 
-[![Demo](https://img.youtube.com/vi/pPiSlKU8Suo/0.jpg)](https://www.youtube.com/watch?v=pPiSlKU8Suo)
+[![Demo](https://img.youtube.com/vi/qyGkkDDFgI4/0.jpg)](https://youtu.be/qyGkkDDFgI4)
 
 ## Setup & Run
 ```
